@@ -1,6 +1,6 @@
 <?php
-require_once('../Modelo/usuario.php');
-
+require_once __DIR__ . '/../Modelo/mueble.php';
+require_once __DIR__ . '/../Controlador/UsuarioController.php';
 class UsuarioController {
     public function iniciarSesion($usuario, $contrasena) {
         $modelo = new UsuarioModelo();

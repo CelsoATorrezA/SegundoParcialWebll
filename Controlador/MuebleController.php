@@ -1,6 +1,6 @@
 <?php
-require_once('../Modelo/mueble.php');
-
+require_once __DIR__ . '/../Modelo/mueble.php';
+require_once __DIR__ . '/../Controlador/UsuarioController.php';
 class MuebleController {
     public function mostrarTodosLosMuebles() {
         $modelo = new MuebleModelo();

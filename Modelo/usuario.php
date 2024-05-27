@@ -1,6 +1,6 @@
 <?php
-require_once('../db.php');
-
+require_once __DIR__ . '/../db.php';
+require_once __DIR__ . '/../Controlador/UsuarioController.php';
 class UsuarioModelo {
     public function validarUsuario($usuario, $contrasena) {
         global $conexion;
