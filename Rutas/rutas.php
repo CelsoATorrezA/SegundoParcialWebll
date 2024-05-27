@@ -35,7 +35,7 @@ switch ($accion) {
         break;
     default:
         // Acción por defecto: Mostrar la página de inicio
-        include('index.php');
+        include('../Vista/login.php');
         break;
 }
 ?>
