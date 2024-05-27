@@ -1,5 +1,5 @@
 <?php
-require_once('../Model/MuebleModelo.php');
+require_once('../Modelo/mueble.php');
 
 class MuebleController {
     public function mostrarTodosLosMuebles() {

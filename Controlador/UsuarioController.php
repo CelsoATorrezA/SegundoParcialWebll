@@ -1,5 +1,5 @@
 <?php
-require_once('../Modelo/UsuarioModelo.php');
+require_once('../Modelo/usuario.php');
 
 class UsuarioController {
     public function iniciarSesion($usuario, $contrasena) {
