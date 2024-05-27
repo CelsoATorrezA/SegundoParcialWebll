@@ -1,6 +1,8 @@
 <?php
 // Inicializar la sesión si aún no se ha iniciado
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Cargar las dependencias necesarias
 require_once('Rutas/rutas.php');
