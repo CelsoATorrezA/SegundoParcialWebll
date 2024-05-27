@@ -17,6 +17,7 @@
             <th>Marca</th>
             <th>Proveedor</th>
             <th>Material</th>
+            <th>Acciones</th> <!-- Columna para los botones de acción -->
         </tr>
         <?php
         require_once('../Controlador/MuebleController.php');
@@ -32,10 +33,16 @@
             echo "<td>".$mueble['marca']."</td>";
             echo "<td>".$mueble['proveedor']."</td>";
             echo "<td>".$mueble['material']."</td>";
+            // Agregar botones de editar y añadir
+            echo "<td>";
+            echo "<a href='editaryagregar.php?codigo_mueble=".$mueble['codigo_mueble']."'>Editar</a> | ";
+           
+            echo "<a href='editar_mueble.php?codigo_mueble=".$mueble['codigo_mueble']."'>Eliminar</a> | ";         
+            echo "</td>";
             echo "</tr>";
+
         }
         ?>
     </table>
-    
 </body>
 </html>

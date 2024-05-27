@@ -18,7 +18,7 @@ class MuebleModelo {
 
     public function obtenerMueblePorId($id) {
         global $conexion;
-        $sql = "SELECT * FROM muebles_hogar WHERE id = :id";
+        $sql = "SELECT * FROM muebles_hogar WHERE codigo_mueble = :id";
         $consulta = $conexion->prepare($sql);
         $consulta->bindParam(':id', $id);
         $consulta->execute();
