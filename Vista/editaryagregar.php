@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Mueble</title>
+    <title> <?php
+    if (isset($_GET['codigo_mueble']) ) {
+        echo "Editar Mueble";
+    } else {
+        echo "Crear Mueble";
+    }
+    ?></title>
 </head>
 <body>
-    <h1>Editar Mueble</h1>
+    <h1>
+    <?php
+    if (isset($_GET['codigo_mueble']) ) {
+        echo "Editar Mueble";
+    } else {
+        echo "Crear Mueble";
+    }
+    ?>
+</h1>
     <?php
     require_once('../Controlador/MuebleController.php');
     
@@ -40,10 +54,10 @@
     }
 
     // Verificar si se ha enviado el formulario de actualización
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['accion']) && $_POST['accion'] == 'actualizarMueble') {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['accion']) && ($_POST['accion'] == 'actualizarMueble' ||  $_POST['accion'] == 'crearMueble') ) {
         // Obtener los datos del formulario
         $controlador = new MuebleController();
-        $mueble = $controlador->obtenerMueblePorId($codigo_mueble);
+        //$mueble = $controlador->obtenerMueblePorId($codigo_mueble);
         $codigo_mueble = $_POST['codigo_mueble'];
         $nombre_mueble = $_POST['nombre_mueble'];
         $tipo = $_POST['tipo'];
@@ -64,20 +78,23 @@
             'proveedor' => $proveedor,
             'material' => $material
         );
+        if($_POST['accion'] == 'actualizarMueble'){
+            $resultado = $controlador->actualizarMueble($mueble);
+        }
+        else{
+            $resultado = $controlador->agregarMueble($mueble);
 
-        // Actualizar el mueble en la base de datos
-        $resultado = $controlador->actualizarMueble($mueble);
-
-
+        }
             echo "<p>Mueble actualizado correctamente.</p>";
-            
-            echo '<script>window.location.href = "muebles.php";</script>';
+        
+           echo '<script>window.location.href = "muebles.php";</script>';
      
     }
     ?>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-        <input type="hidden" name="accion" value="actualizarMueble">
-        <input type="hidden" name="codigo_mueble" value="<?php echo $codigo_mueble; ?>">
+        <input type="hidden" name="accion" value="<?php echo isset($_GET['codigo_mueble']) ? 'actualizarMueble' : 'crearMueble'; ?>">
+        <label for="codigo_mueble_mueble">Codigo Mueble:</label><br>
+        <input type="text" name="codigo_mueble" value="<?php echo $codigo_mueble; ?>"><br>
         <label for="nombre_mueble">Nombre:</label><br>
         <input type="text" id="nombre_mueble" name="nombre_mueble" value="<?php echo $nombre_mueble; ?>"><br>
         <label for="tipo">Tipo:</label><br>

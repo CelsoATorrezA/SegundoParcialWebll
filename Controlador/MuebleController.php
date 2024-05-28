@@ -8,6 +8,8 @@ class MuebleController {
     }
 
     public function agregarMueble($datos) {
+        echo("crar");
+        var_dump($datos);
         $modelo = new MuebleModelo();
         $modelo->agregarMueble($datos);
     }
@@ -18,6 +20,8 @@ class MuebleController {
     }
 
     public function actualizarMueble($datos) {
+        echo("actualziar");
+        var_dump($datos);
         $modelo = new MuebleModelo();
         $modelo->actualizarMueble($datos);
     }

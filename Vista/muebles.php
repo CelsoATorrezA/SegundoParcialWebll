@@ -7,6 +7,10 @@
 </head>
 <body>
     <h1>Muebles</h1>
+    <form action="editaryagregar.php" method="post">
+    <!-- Your button -->
+    <button type="submit">Agregar</button>
+</form>
     <table border="1">
         <tr>
             <th>Código</th>
@@ -37,7 +41,8 @@
             echo "<td>";
             echo "<a href='editaryagregar.php?codigo_mueble=".$mueble['codigo_mueble']."'>Editar</a> | ";
            
-            echo "<a href='eliminarMueble.php?codigo_mueble=".$mueble['codigo_mueble']."'>Eliminar</a> | ";         
+            echo "<a href='eliminar.php?codigo_mueble=".$mueble['codigo_mueble']."'>Eliminar</a> | ";
+      
             echo "</td>";
             echo "</tr>";
 

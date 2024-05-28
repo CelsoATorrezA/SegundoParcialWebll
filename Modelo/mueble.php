@@ -10,6 +10,7 @@ class MuebleModelo {
     }
 
     public function agregarMueble($datos) {
+        var_dump($datos);
         global $conexion;
         $sql = "INSERT INTO muebles_hogar (codigo_mueble, nombre_mueble, tipo, precio, stock, marca, proveedor, material) VALUES (:codigo_mueble, :nombre_mueble, :tipo, :precio, :stock, :marca, :proveedor, :material)";
         $consulta = $conexion->prepare($sql);
@@ -35,7 +36,7 @@ class MuebleModelo {
 
     public function eliminarMueble($id) {
         global $conexion;
-        $sql = "DELETE FROM muebles_hogar WHERE id = :id";
+        $sql = "DELETE FROM muebles_hogar WHERE codigo_mueble = :id";
         $consulta = $conexion->prepare($sql);
         $consulta->bindParam(':id', $id);
         $consulta->execute();
