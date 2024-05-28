@@ -26,10 +26,11 @@ class MuebleModelo {
     }
 
     public function actualizarMueble($datos) {
+        //var_dump($datos);
         global $conexion;
-        $sql = "UPDATE muebles_hogar SET codigo_mueble = :codigo_mueble, nombre_mueble = :nombre_mueble, tipo = :tipo, precio = :precio, stock = :stock, marca = :marca, proveedor = :proveedor, material = :material WHERE id = :id";
-        $consulta = $conexion->prepare($sql);
-        $consulta->execute($datos);
+        $sql = "UPDATE muebles_hogar SET codigo_mueble = :codigo_mueble, nombre_mueble = :nombre_mueble, tipo = :tipo, precio = :precio, stock = :stock, marca = :marca, proveedor = :proveedor, material = :material WHERE codigo_mueble = :codigo_mueble";
+        $consulta = $conexion->prepare($sql);       
+        return $consulta->execute($datos);
     }
 
     public function eliminarMueble($id) {

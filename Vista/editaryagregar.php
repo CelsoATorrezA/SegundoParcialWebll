@@ -43,12 +43,12 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['accion']) && $_POST['accion'] == 'actualizarMueble') {
         // Obtener los datos del formulario
         $controlador = new MuebleController();
-
+        $mueble = $controlador->obtenerMueblePorId($codigo_mueble);
         $codigo_mueble = $_POST['codigo_mueble'];
         $nombre_mueble = $_POST['nombre_mueble'];
         $tipo = $_POST['tipo'];
-        $precio = $_POST['precio'];
-        $stock = $_POST['stock'];
+        $precio = intval($_POST['precio']); // Convertir a entero
+        $stock = intval($_POST['stock']); // Convertir a entero
         $marca = $_POST['marca'];
         $proveedor = $_POST['proveedor'];
         $material = $_POST['material'];
@@ -68,13 +68,11 @@
         // Actualizar el mueble en la base de datos
         $resultado = $controlador->actualizarMueble($mueble);
 
-        if ($resultado) {
+
             echo "<p>Mueble actualizado correctamente.</p>";
-            // Redirigir al usuario de vuelta a la página de la tabla de muebles
-            echo '<script>window.location.href = "mostrar_muebles.php";</script>';
-        } else {
-            echo "<p>Ocurrió un error al actualizar el mueble.</p>";
-        }
+            
+            echo '<script>window.location.href = "muebles.php";</script>';
+     
     }
     ?>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">

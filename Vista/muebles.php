@@ -37,7 +37,7 @@
             echo "<td>";
             echo "<a href='editaryagregar.php?codigo_mueble=".$mueble['codigo_mueble']."'>Editar</a> | ";
            
-            echo "<a href='editar_mueble.php?codigo_mueble=".$mueble['codigo_mueble']."'>Eliminar</a> | ";         
+            echo "<a href='eliminarMueble.php?codigo_mueble=".$mueble['codigo_mueble']."'>Eliminar</a> | ";         
             echo "</td>";
             echo "</tr>";
 
